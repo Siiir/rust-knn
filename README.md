@@ -7,5 +7,5 @@ Above approach requires:
 1. `git`
 2. `cargo` that is usually installed with [rustup](https://www.rust-lang.org/tools/install)
 
-You can also pass arguments to the app after --, which is cargo's way to separate cargo args from app args.
-`cargo r -r -- --help`
+You can also pass arguments to the app after --, which is cargo's way to separate cargo args from app args.  
+Try: `cargo r -r -- --help`
