@@ -1,6 +1,7 @@
 use ic::{
     app_cfg, read, AppCfg, ClassifiedIris, UnclassifiedIris, APP_CFG, PATH_TO_TESTING_IRISES,
 };
+use num_rational::Ratio;
 
 fn main() -> anyhow::Result<()> {
     let app_args: ic::AppArgs = clap::Parser::parse();
@@ -27,7 +28,7 @@ fn main() -> anyhow::Result<()> {
             .count();
         eprintln!(
             "Classification accuracy for \"{PATH_TO_TESTING_IRISES}\": {}",
-            good_classifications_count / testing_irises.len()
+            Ratio::new_raw(good_classifications_count, testing_irises.len())
         );
     }
     let user_irises = read::user_irises()?;
