@@ -1,7 +1,7 @@
 Basic usage:
 1. `git clone https://github.com/Siiir/iris_classifier`
 2. `cd iris_classifier`
-3. `cargo run --release`
+3. `cat ./data/unclassified_irises.csv | cargo run --release`
 
 This approach requires:
 1. `git`
