@@ -5,8 +5,8 @@ pub mod iris;
 
 pub use paths::*;
 pub mod paths {
-    pub const PATH_TO_TRAINING_IRISES: &str = "./data/training_irises.txt";
-    pub const PATH_TO_TESTING_IRISES: &str = "./data/testing_irises.txt";
+    pub const PATH_TO_TRAINING_IRISES: &str = "./data/training_irises.csv";
+    pub const PATH_TO_TESTING_IRISES: &str = "./data/testing_irises.csv";
 }
 
 pub mod read;
