@@ -1,3 +1,5 @@
+//! General utilities, not related, but used by this app.
+
 pub use cmp::by_dist_sq::ComparedByDistSq;
 pub mod cmp;
 
@@ -6,6 +8,10 @@ pub mod ascii_char {
     use derive_more::Into;
     use std::{fmt::Display, str::FromStr};
 
+    /// Special char with values restricted to 7-bit ascii table.
+    ///
+    /// Can be parses from string as its only character.
+    /// Is NOT parsed from numeric representation like [`u8`] would be.
     #[derive(Clone, Copy, Debug, Eq, PartialEq, PartialOrd, Ord, Hash, Into)]
     pub struct AsciiChar7Bit(
         // Invariant: Encodes a valid 1-byte UTF-8 string on its own.
@@ -15,6 +21,8 @@ pub mod ascii_char {
     impl AsciiChar7Bit {
         pub const COMMA: Self = Self(b',');
     }
+
+    /// Displays self's symbol, not ascii code.
     impl Display for AsciiChar7Bit {
         fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> std::fmt::Result {
             f.write_str(
@@ -23,6 +31,7 @@ pub mod ascii_char {
             )
         }
     }
+    /// Parses `Self` from symbol, not intiger (ascii code).
     impl FromStr for AsciiChar7Bit {
         type Err = anyhow::Error;
 
@@ -41,6 +50,7 @@ pub mod ascii_char {
 use crate::IrisSpecies;
 use std::collections::HashMap;
 
+/// Returns the most common element in the iterator.
 pub fn mode(classifications: impl Iterator<Item = IrisSpecies>) -> anyhow::Result<IrisSpecies> {
     let mut counts = HashMap::new();
     for classification in classifications {

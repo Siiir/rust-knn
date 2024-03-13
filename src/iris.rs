@@ -1,5 +1,6 @@
 use crate::UnclassifiedIris;
 
+/// Iris functionalities that are independent of classification or lack of it.
 pub trait Iris {
     // Required
     fn data(&self) -> &UnclassifiedIris;
@@ -17,24 +18,11 @@ pub trait Iris {
         .map(|x| x * x)
         .sum()
     }
-    // fn dist_sq_gnrc<I>(&self, other: &I) -> f32
-    // where
-    //     Self: Sized, I: Iris + ?Sized
-    // {
-    //     let lhs = self.data();
-    //     let rhs = other.data();
-    //     [
-    //         (lhs.sepal_length - rhs.sepal_length),
-    //         (lhs.sepal_width - rhs.sepal_width),
-    //         (lhs.petal_length - rhs.petal_length),
-    //         (lhs.petal_width - rhs.petal_width),
-    //     ]
-    //     .into_iter()
-    //     .map(|x| x * x)
-    //     .sum()
-    // }
 }
-pub mod classification {
+
+pub mod species {
+    //! Defines recognized iris classifications (species).
+
     use serde::{Deserialize, Deserializer};
     use strum_macros as sm;
 
@@ -69,8 +57,10 @@ pub mod classification {
     }
 }
 pub mod unclassified {
+    //! Unclassified iris functionalities.
     use crate::Iris;
 
+    /// Unclassified iris.
     #[derive(serde::Deserialize, Debug, Clone, Copy, PartialEq, tabled::Tabled)]
     pub struct UnclassifiedIris {
         pub sepal_length: f32,
@@ -85,6 +75,8 @@ pub mod unclassified {
     }
 }
 pub mod classified {
+    //! Classified iris functionalities.
+
     use derive_more::{Constructor, Deref, DerefMut};
     use num_enum::TryFromPrimitive;
     use serde::{Deserialize, Deserializer};
@@ -92,6 +84,9 @@ pub mod classified {
 
     use crate::{Iris, IrisSpecies, UnclassifiedIris};
 
+    /// Classified iris.
+    ///
+    /// Inherits many functionalities from unclassified iris.
     #[derive(Constructor, Clone, Copy, Debug, PartialEq, Deref, DerefMut)]
     pub struct ClassifiedIris {
         #[deref]

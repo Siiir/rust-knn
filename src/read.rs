@@ -7,6 +7,7 @@ use crate::{
     PATH_TO_TRAINING_IRISES,
 };
 
+// Helpful local type aliases.
 type UnclassifiedIrises = Vec<UnclassifiedIris>;
 type ClassifiedIrises = Vec<ClassifiedIris>;
 

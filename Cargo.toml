@@ -1,6 +1,7 @@
 [package]
 name = "iris_classifier"
 version = "0.1.0"
+description = "Classifies irises into one of 3 species: Setosa, Versicolor, Virginica."
 edition = "2021"
 
 [lib]
