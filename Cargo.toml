@@ -1,10 +1,11 @@
 [package]
 name = "iris_classifier"
-version = "1.1.0"
+version = "1.1.1"
 license = "MIT"
 authors = ["Tomasz Nehring"]
 description = "Classifies irises into one of 3 species: Setosa, Versicolor, Virginica."
 edition = "2021"
+documentation = "https://docs.rs/iris_classifier/latest/ic/"
 repository = "https://github.com/Siiir/iris_classifier/"
 
 [lib]

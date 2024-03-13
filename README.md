@@ -12,4 +12,4 @@ You can also pass arguments to the app after --, which is cargo's way to separat
 Try: `cargo r -r -- --help`
 
 ## Documentation
-[Documentation of functions other than main.](https://siiir.github.io/iris_classifier/)
+[Documentation of functions other than main.](https://docs.rs/iris_classifier/latest/ic/)
