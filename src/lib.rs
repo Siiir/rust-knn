@@ -33,6 +33,12 @@ macro_rules! executable_desc{
             Measure will be rendered to stderr.\n\
         2. Read all irises from stdin untill EOF. Then classify them. \
             This will be displayed in stdout.\
+        \n\
+        EXAMPLE usages for app is installed as `iris_classifier`:\n\
+        * `echo '1.,2,3,4' | iris_classifier`\n\
+        * `cat ./data/unclassified_irises.csv | iris_classifier`\n\
+        * `echo 'some.invalid.data' | iris_classifier --separator '.'`\n\
+        * `echo '1 2 3 4' | iris_classifier -s=' '`\n\
         "
     }
 }

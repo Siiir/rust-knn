@@ -59,9 +59,11 @@ pub mod species {
 pub mod unclassified {
     //! Unclassified iris functionalities.
     use crate::Iris;
+    use derive_more::Constructor;
+    use nalgebra as na;
 
     /// Unclassified iris.
-    #[derive(serde::Deserialize, Debug, Clone, Copy, PartialEq, tabled::Tabled)]
+    #[derive(serde::Deserialize, Constructor, Clone, Copy, Debug, PartialEq, tabled::Tabled)]
     pub struct UnclassifiedIris {
         pub sepal_length: f32,
         pub sepal_width: f32,
@@ -71,6 +73,17 @@ pub mod unclassified {
     impl Iris for UnclassifiedIris {
         fn data(&self) -> &UnclassifiedIris {
             self
+        }
+    }
+    impl From<UnclassifiedIris> for na::SVector<f32, 4> {
+        fn from(iris: UnclassifiedIris) -> Self {
+            [
+                iris.sepal_length,
+                iris.sepal_width,
+                iris.petal_length,
+                iris.petal_width,
+            ]
+            .into()
         }
     }
 }
