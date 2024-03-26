@@ -2,14 +2,23 @@
 
 use std::borrow::Cow;
 
-use derive_more::{From, Into};
+use derive_more::{AsMut, AsRef, From, Into};
 use nalgebra as na;
 
 use crate::Iris;
 
 /// Unclassified iris.
-#[derive(From, Clone, Copy, Debug, PartialEq, Into)]
+#[derive(From, Clone, Copy, Debug, PartialEq, AsRef, AsMut, Into)]
 pub struct UnclassifiedIris(na::SVector<f32, 4>);
+
+impl UnclassifiedIris {
+    pub fn as_na_svec(&self) -> &na::SVector<f32, 4> {
+        &self.0
+    }
+    pub fn as_na_svec_mut(&mut self) -> &mut na::SVector<f32, 4> {
+        &mut self.0
+    }
+}
 
 // CRUD-C: Constructors
 impl From<[f32; 4]> for UnclassifiedIris {

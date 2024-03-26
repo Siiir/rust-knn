@@ -1,5 +1,7 @@
 //! Classified iris functionalities.
 
+use std::borrow::Cow;
+
 use derive_more::{Constructor, Deref, DerefMut};
 use serde::{Deserialize, Deserializer};
 use tabled::Tabled;
@@ -54,18 +56,19 @@ impl IrisParams for ClassifiedIris {
 }
 // CRUD-R: Displayers
 impl Tabled for ClassifiedIris {
-    const LENGTH: usize = <UnclassifiedIris as Tabled>::LENGTH + 1;
+    const LENGTH: usize = FlatClassifiedIris::LENGTH;
 
-    fn fields(&self) -> Vec<std::borrow::Cow<'_, str>> {
-        let mut parameters = self.parameters.fields();
-        parameters.push(self.classification.as_ref().into());
-        parameters
+    fn headers() -> Vec<Cow<'static, str>> {
+        FlatClassifiedIris::headers()
     }
 
-    fn headers() -> Vec<std::borrow::Cow<'static, str>> {
-        let mut parameters = <UnclassifiedIris as Tabled>::headers();
-        parameters.push("species".into());
-        parameters
+    fn fields(&self) -> Vec<Cow<'_, str>> {
+        FlatClassifiedIris::from(*self)
+            .fields()
+            .into_iter()
+            .map(Cow::into_owned)
+            .map(Cow::from)
+            .collect()
     }
 }
 
