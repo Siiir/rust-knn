@@ -1,5 +1,6 @@
 pub use iris::{
-    classified::ClassifiedIris, species::IrisSpecies, unclassified::UnclassifiedIris, Iris,
+    classified::ClassifiedIris, params::IrisParams, species::IrisSpecies,
+    unclassified::UnclassifiedIris, Iris,
 };
 pub mod iris;
 
