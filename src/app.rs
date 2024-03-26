@@ -10,6 +10,7 @@ pub mod args {
     #[derive(clap::Parser, Debug)]
     #[command(version, about, long_about = crate::executable_desc!())]
     pub struct AppArgs {
+        #[cfg(feature = "knn")]
         /// `k` that is used in KNN algorithm used by this iris classifier.
         #[arg(short, long, default_value_t = 3)]
         pub k_for_knn: usize,

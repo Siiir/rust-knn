@@ -1,6 +1,6 @@
 [package]
 name = "iris_classifier"
-version = "2.1.0"
+version = "2.2.0"
 license = "MIT"
 authors = ["Tomasz Nehring"]
 description = "Classifies irises into one of 3 species: Setosa, Versicolor, Virginica."
@@ -10,6 +10,10 @@ repository = "https://github.com/Siiir/iris_classifier/"
 
 [lib]
 name = "ic"
+
+[features]
+default = ["knn"]
+knn = []
 
 [dependencies]
 anyhow = "1.0.80"
@@ -25,3 +29,13 @@ serde = { version = "1.0.197", features = ["derive"] }
 strum = { version = "0.26.1", features = ["derive"] }
 strum_macros = "0.26.1"
 tabled = "0.15.0"
+
+[profile.comp_time]
+inherits = "dev"
+opt-level = 0
+debug = 0
+strip = "none"
+lto = false
+codegen-units = 256
+incremental = true
+
