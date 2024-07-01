@@ -1,3 +1,12 @@
+# knn
+Implementation of k nearest neighbours with use case.
+
+## Contest
+### The library
+is an implementation of **k nearest neighbours** algorithm.
+### The app
+is an **iris classifier** using the library.
+
 ## Download
 1. `git clone https://github.com/Siiir/rust-knn`
    
